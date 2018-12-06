@@ -13,10 +13,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response=> response.json())
-      .then(users => {this.setState({ robots: users})});
+  async componentDidMount() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await response.json();
+    this.setState({ robots: data });
   }
 
   onSearchChange = (event) => {
